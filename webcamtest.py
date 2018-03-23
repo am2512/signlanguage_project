@@ -1,31 +1,42 @@
-import cv2
-import time
 import sys
-import subprocess
+import os
 
-def main():
-	cam = cv2.VideoCapture(0)
-    
-	frame = cam.read()[1]
-	time.sleep(1)
-	
-	cv2.imwrite(filename='/home/ahalyamandana/tensorflow-for-poets-2/tf_files/sign_photos/img3.jpg', img=frame)
+import matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
+import copy
+import cv2
+import time 
 
-	response = input("Please enter the letter: ")
-
-	if (response == "o"):
-
-
-		time.sleep(1)
-
-		subprocess.call("python -m  scripts.label_image     --graph=tf_files/retrained_graph.pb      --image=tf_files/sign_photos/img3.jpg", shell=True)
-	
-	
-	
-	
-
-if __name__ == '__main__':
-	main()
+import tensorflow as tf
 
 
 
+
+from PIL import Image
+
+
+
+
+time.sleep(5)
+
+cap = cv2.VideoCapture(0)
+
+res, score = '', 0.0
+i = 0
+mem = ''
+consecutive = 0
+sequence = ''
+
+ret, img = cap.read()
+img = cv2.flip(img, 1)
+if ret:
+    x1, y1, x2, y2 = 175, 175, 375, 375
+    img_cropped = img[y1:y2, x1:x2]
+    cv2.imwrite( "/home/ahalyamandana/sign_language_project/tf_files/sign_photos/test.jpg", img_cropped);
+
+        
+           
+# Following line should appear but is not working with opencv-python package
+cap.release()
+cv2.destroyAllWindows()

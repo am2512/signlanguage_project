@@ -138,6 +138,14 @@ if __name__ == "__main__":
 
     ##deciding which letter it is
 
+    print(labels[i], results[i])
+
     if (results[i]>0.7):
 
       print("Yes, that's the correct letter! Good work!")
+
+    else:
+
+      print("No, that's not right! Try again!")
+
+
